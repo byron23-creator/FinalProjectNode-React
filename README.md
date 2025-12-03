@@ -2,7 +2,7 @@
 
 A full-stack event ticketing platform built with React and Node.js, allowing users to browse events, purchase tickets, and manage bookings. Administrators can manage events, categories, and users through a dedicated admin panel.
 
-## 🚀 Features
+## Features
 
 ### User Features
 - **Browse Events**: View all available events with search and filtering capabilities
@@ -19,7 +19,7 @@ A full-stack event ticketing platform built with React and Node.js, allowing use
 - **User Management**: View and manage user accounts and roles
 - **Sales Reports**: Track ticket sales and revenue
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Frontend
 - **React** - UI library
@@ -35,7 +35,7 @@ A full-stack event ticketing platform built with React and Node.js, allowing use
 - **Bcrypt** - Password hashing
 - **Multer** - File upload handling
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before running this project, make sure you have:
 
@@ -43,7 +43,7 @@ Before running this project, make sure you have:
 - MySQL (v8.0 or higher)
 - npm or yarn package manager
 
-## 🔧 Installation
+## Installation
 
 ### 1. Clone the Repository
 ```bash
@@ -86,7 +86,7 @@ cd frontend
 npm install
 ```
 
-## 🚀 Running the Application
+## Running the Application
 
 ### Start the Backend Server
 
@@ -106,7 +106,7 @@ npm start
 
 The frontend will run on `http://localhost:3000`
 
-## 👤 Default Admin Account
+## Default Admin Account
 
 After setting up the database, you can create an admin user by running:
 
@@ -143,55 +143,3 @@ FinalProjectNode-React/
 └── README.md
 ```
 
-## 🔐 Security Notes
-
-- The `.env` file is excluded from version control for security
-- Passwords are hashed using bcrypt
-- JWT tokens are used for authentication
-- File uploads are validated and stored securely
-
-## 📝 API Endpoints
-
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - User login
-
-### Events
-- `GET /api/events` - Get all events (with filters)
-- `GET /api/events/:id` - Get event by ID
-- `POST /api/events` - Create event (Admin/Organizer)
-- `PUT /api/events/:id` - Update event (Admin/Organizer)
-- `DELETE /api/events/:id` - Delete event (Admin/Organizer)
-
-### Tickets
-- `POST /api/tickets` - Purchase tickets
-- `GET /api/tickets/user` - Get user's tickets
-
-### Categories
-- `GET /api/categories` - Get all categories
-- `POST /api/categories` - Create category (Admin)
-- `PUT /api/categories/:id` - Update category (Admin)
-- `DELETE /api/categories/:id` - Delete category (Admin)
-
-### Admin
-- `GET /api/admin/dashboard` - Get dashboard statistics
-- `GET /api/admin/reports/sales` - Get sales report
-
-## 🤝 Contributing
-
-This is a university project. If you'd like to contribute or report issues, please contact the repository owner.
-
-## 👨‍💻 Author
-
-**Byron Fernando Cardona Sánchez**
-- GitHub: [@byron23-creator](https://github.com/byron23-creator)
-
-## 📄 License
-
-This project is for educational purposes as part of a university final project.
-
-## 🙏 Acknowledgments
-
-- Universidad Mariano Gálvez de Guatemala
-- Node.js and React communities
-- All open-source libraries used in this project
