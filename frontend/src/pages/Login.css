@@ -1,15 +1,10 @@
-/* Login Page Styles */
-/* This file styles the login page with the SaleSkip split-screen design */
-
 .login-container {
   display: flex;
   min-height: 100vh;
   width: 100%;
 }
 
-/* Left Side - Blue Background */
 .login-left {
-  /* [EDITABLE] Change the background color here */
   background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
   flex: 1;
   display: flex;
@@ -21,18 +16,15 @@
   position: relative;
 }
 
-/* Logo/Icon Container */
 .login-logo {
   margin-bottom: 40px;
 }
 
 .logo-icon {
-  /* [EDITABLE] Change the icon size and style here */
   font-size: 80px;
   animation: float 3s ease-in-out infinite;
 }
 
-/* Floating animation for logo */
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
@@ -44,7 +36,6 @@
 
 /* Welcome Title */
 .login-title {
-  /* [EDITABLE] Change the title font size and style here */
   font-size: 56px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -54,7 +45,6 @@
 
 /* Subtitle */
 .login-subtitle {
-  /* [EDITABLE] Change the subtitle text style here */
   font-size: 18px;
   text-align: center;
   opacity: 0.9;
@@ -66,14 +56,12 @@
 .login-footer {
   position: absolute;
   bottom: 30px;
-  /* [EDITABLE] Change the footer text style here */
   font-size: 14px;
   opacity: 0.7;
 }
 
 /* Right Side - White Background */
 .login-right {
-  /* [EDITABLE] Change the background color here */
   background-color: #ffffff;
   flex: 1;
   display: flex;
@@ -89,7 +77,6 @@
 
 /* Brand Name */
 .brand-name {
-  /* [EDITABLE] Change the brand name style here */
   font-size: 32px;
   font-weight: 700;
   color: #1F2937;
@@ -98,7 +85,6 @@
 
 /* Form Title */
 .form-title {
-  /* [EDITABLE] Change the form title style here */
   font-size: 28px;
   font-weight: 600;
   color: #1F2937;
@@ -114,7 +100,6 @@
 }
 
 .signup-link {
-  /* [EDITABLE] Change the signup link color here */
   color: #4F46E5;
   text-decoration: none;
   font-weight: 600;
@@ -146,13 +131,11 @@
 
 .form-input:focus {
   outline: none;
-  /* [EDITABLE] Change the input focus border color here */
   border-color: #4F46E5;
 }
 
 /* Login Button */
 .login-button {
-  /* [EDITABLE] Change the login button color here */
   background-color: #1F2937;
   color: white;
   padding: 14px;
@@ -175,7 +158,6 @@
 
 /* Google Button */
 .google-button {
-  /* [EDITABLE] Change the Google button style here */
   background-color: white;
   color: #1F2937;
   padding: 14px;
@@ -197,7 +179,6 @@
 }
 
 .google-icon {
-  /* [EDITABLE] Change the Google icon style here */
   font-weight: 700;
   color: #4285F4;
   font-size: 18px;
@@ -210,7 +191,6 @@
 }
 
 .forgot-link {
-  /* [EDITABLE] Change the forgot password link color here */
   color: #6B7280;
   text-decoration: none;
   font-size: 14px;
@@ -223,7 +203,6 @@
 
 /* Error Message */
 .error-message {
-  /* [EDITABLE] Change the error message style here */
   background-color: #FEE2E2;
   color: #DC2626;
   padding: 12px;
