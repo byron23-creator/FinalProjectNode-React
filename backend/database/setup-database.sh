@@ -1,7 +1,5 @@
-#!/bin/bash
 
 # Database Setup Script for Event Management Platform
-# This script will create the database and run the schema
 
 echo "=========================================="
 echo "Event Management Database Setup"
