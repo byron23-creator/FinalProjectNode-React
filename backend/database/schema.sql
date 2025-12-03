@@ -1,7 +1,4 @@
--- Event Management Platform Database Schema
--- This file contains all the table definitions and relationships
 
--- Drop existing tables if they exist (for clean setup)
 DROP TABLE IF EXISTS tickets;
 DROP TABLE IF EXISTS event_images;
 DROP TABLE IF EXISTS events;
@@ -103,11 +100,9 @@ INSERT INTO categories (name, description) VALUES
 ('Education', 'Educational seminars and courses');
 
 -- Insert a default admin user (password: admin123)
--- Note: This password is hashed using bcrypt with salt rounds = 10
 INSERT INTO users (email, password, first_name, last_name, role_id) VALUES 
 ('admin@events.com', '$2a$10$DmWqaI2orA6c1PX5bH8P6eYrn6Aguvps.ZiQelPVFFFJMk/v2IxCy', 'Admin', 'User', 1);
 
--- Create indexes for better query performance
 CREATE INDEX idx_events_category ON events(category_id);
 CREATE INDEX idx_events_organizer ON events(organizer_id);
 CREATE INDEX idx_events_date ON events(event_date);
