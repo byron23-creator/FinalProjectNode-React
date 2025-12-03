@@ -1,0 +1,78 @@
+/* Admin Dashboard Styles */
+
+.admin-dashboard {
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.admin-dashboard h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #1F2937;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stat-icon {
+  font-size: 48px;
+}
+
+.stat-info h3 {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #4F46E5;
+  margin: 0;
+}
+
+.admin-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.admin-link-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.admin-link-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.admin-link-card h3 {
+  font-size: 20px;
+  color: #1F2937;
+  margin-bottom: 10px;
+}
+
+.admin-link-card p {
+  color: #6B7280;
+  margin: 0;
+}

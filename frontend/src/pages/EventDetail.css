@@ -1,0 +1,223 @@
+/* Event Detail Page Styles */
+
+.event-detail-page {
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.event-detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-detail-image {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #E5E7EB;
+}
+
+.event-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-image-large {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9CA3AF;
+  font-size: 24px;
+}
+
+.event-detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.event-category-badge {
+  /* [EDITABLE] Change category badge color */
+  background-color: #4F46E5;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.event-detail-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1F2937;
+  margin: 0;
+}
+
+.event-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #6B7280;
+}
+
+.meta-icon {
+  font-size: 20px;
+}
+
+.event-description {
+  margin-top: 20px;
+}
+
+.event-description h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #1F2937;
+}
+
+.event-description p {
+  line-height: 1.6;
+  color: #6B7280;
+}
+
+.purchase-section {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: #F9FAFB;
+  border-radius: 12px;
+}
+
+.price-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.price-label {
+  font-size: 16px;
+  color: #6B7280;
+}
+
+.price-value {
+  /* [EDITABLE] Change price color */
+  font-size: 32px;
+  font-weight: 700;
+  color: #4F46E5;
+}
+
+.quantity-selector {
+  margin-bottom: 20px;
+}
+
+.quantity-selector label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #1F2937;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.quantity-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #D1D5DB;
+  background-color: white;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.quantity-btn:hover {
+  background-color: #F3F4F6;
+}
+
+.quantity-display {
+  font-size: 20px;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 2px solid #E5E7EB;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.total-amount {
+  /* [EDITABLE] Change total amount color */
+  color: #4F46E5;
+  font-size: 24px;
+}
+
+.purchase-button {
+  /* [EDITABLE] Change purchase button color */
+  width: 100%;
+  background-color: #4F46E5;
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.purchase-button:hover:not(:disabled) {
+  background-color: #4338CA;
+}
+
+.purchase-button:disabled {
+  background-color: #9CA3AF;
+  cursor: not-allowed;
+}
+
+.sold-out-message {
+  text-align: center;
+  padding: 20px;
+  background-color: #FEE2E2;
+  color: #DC2626;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .event-detail-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .event-detail-image {
+    height: 300px;
+  }
+  
+  .event-detail-title {
+    font-size: 28px;
+  }
+}

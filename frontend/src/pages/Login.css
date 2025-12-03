@@ -1,0 +1,265 @@
+/* Login Page Styles */
+/* This file styles the login page with the SaleSkip split-screen design */
+
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Left Side - Blue Background */
+.login-left {
+  /* [EDITABLE] Change the background color here */
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+  color: white;
+  position: relative;
+}
+
+/* Logo/Icon Container */
+.login-logo {
+  margin-bottom: 40px;
+}
+
+.logo-icon {
+  /* [EDITABLE] Change the icon size and style here */
+  font-size: 80px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Floating animation for logo */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Welcome Title */
+.login-title {
+  /* [EDITABLE] Change the title font size and style here */
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Subtitle */
+.login-subtitle {
+  /* [EDITABLE] Change the subtitle text style here */
+  font-size: 18px;
+  text-align: center;
+  opacity: 0.9;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+/* Footer Text */
+.login-footer {
+  position: absolute;
+  bottom: 30px;
+  /* [EDITABLE] Change the footer text style here */
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Right Side - White Background */
+.login-right {
+  /* [EDITABLE] Change the background color here */
+  background-color: #ffffff;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Brand Name */
+.brand-name {
+  /* [EDITABLE] Change the brand name style here */
+  font-size: 32px;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 40px;
+}
+
+/* Form Title */
+.form-title {
+  /* [EDITABLE] Change the form title style here */
+  font-size: 28px;
+  font-weight: 600;
+  color: #1F2937;
+  margin-bottom: 10px;
+}
+
+/* Form Subtitle */
+.form-subtitle {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.signup-link {
+  /* [EDITABLE] Change the signup link color here */
+  color: #4F46E5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* Login Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  padding: 14px 16px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  /* [EDITABLE] Change the input focus border color here */
+  border-color: #4F46E5;
+}
+
+/* Login Button */
+.login-button {
+  /* [EDITABLE] Change the login button color here */
+  background-color: #1F2937;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #111827;
+}
+
+.login-button:disabled {
+  background-color: #9CA3AF;
+  cursor: not-allowed;
+}
+
+/* Google Button */
+.google-button {
+  /* [EDITABLE] Change the Google button style here */
+  background-color: white;
+  color: #1F2937;
+  padding: 14px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.google-button:hover {
+  background-color: #F9FAFB;
+  border-color: #9CA3AF;
+}
+
+.google-icon {
+  /* [EDITABLE] Change the Google icon style here */
+  font-weight: 700;
+  color: #4285F4;
+  font-size: 18px;
+}
+
+/* Forgot Password */
+.forgot-password {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forgot-link {
+  /* [EDITABLE] Change the forgot password link color here */
+  color: #6B7280;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-link:hover {
+  color: #4F46E5;
+  text-decoration: underline;
+}
+
+/* Error Message */
+.error-message {
+  /* [EDITABLE] Change the error message style here */
+  background-color: #FEE2E2;
+  color: #DC2626;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-left {
+    min-height: 300px;
+    padding: 40px 20px;
+  }
+
+  .login-title {
+    font-size: 36px;
+  }
+
+  .login-subtitle {
+    font-size: 16px;
+  }
+
+  .login-right {
+    padding: 40px 20px;
+  }
+
+  .brand-name {
+    font-size: 24px;
+  }
+
+  .form-title {
+    font-size: 22px;
+  }
+}
