@@ -1,0 +1,109 @@
+name: Testing CI/CD
+
+on:
+  push:
+    branches: [ main, develop, '**' ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root_password
+          MYSQL_DATABASE: event_management_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Wait for MySQL
+        run: |
+          until mysqladmin ping -h"127.0.0.1" -P"3306" -u"root" -p"root_password" --silent; do
+            echo 'Waiting for MySQL...'
+            sleep 2
+          done
+          echo 'MySQL is ready!'
+
+      - name: Create test environment file
+        working-directory: ./backend
+        run: |
+          echo "DB_HOST=127.0.0.1" > .env.test
+          echo "DB_USER=root" >> .env.test
+          echo "DB_PASSWORD=root_password" >> .env.test
+          echo "DB_NAME=event_management" >> .env.test
+          echo "DB_NAME_TEST=event_management_test" >> .env.test
+          echo "JWT_SECRET=test-secret-key-for-ci" >> .env.test
+          echo "PORT=5000" >> .env.test
+          echo "NODE_ENV=test" >> .env.test
+
+      - name: Run unit tests
+        working-directory: ./backend
+        run: npm run test:unit
+        env:
+          NODE_ENV: test
+
+      - name: Run integration tests
+        working-directory: ./backend
+        run: npm run test:integration
+        env:
+          NODE_ENV: test
+
+      - name: Run all tests with coverage
+        working-directory: ./backend
+        run: npm run test:coverage
+        env:
+          NODE_ENV: test
+
+      - name: Check coverage threshold
+        working-directory: ./backend
+        run: |
+          echo "Checking if coverage meets 80% threshold..."
+          npm run test:coverage -- --passWithNoTests
+        env:
+          NODE_ENV: test
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./backend/coverage/lcov.info
+          flags: backend
+          name: backend-coverage
+          fail_ci_if_error: false
+
+      - name: Comment coverage on PR
+        if: github.event_name == 'pull_request'
+        uses: romeovs/lcov-reporter-action@v0.3.1
+        with:
+          lcov-file: ./backend/coverage/lcov.info
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          delete-old-comments: true
+
+      - name: Test Summary
+        if: always()
+        run: |
+          echo "✅ Testing completed!"
+          echo "📊 Coverage report generated in backend/coverage/"
+          echo "🎯 Minimum coverage threshold: 80%"

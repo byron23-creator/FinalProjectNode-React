@@ -19,7 +19,7 @@ A full-stack event ticketing platform built with React and Node.js, allowing use
 - **User Management**: View and manage user accounts and roles
 - **Sales Reports**: Track ticket sales and revenue
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 ### Frontend
 - **React** - UI library
@@ -43,7 +43,7 @@ Before running this project, make sure you have:
 - MySQL (v8.0 or higher)
 - npm or yarn package manager
 
-## Installation
+## 🔧 Installation
 
 ### 1. Clone the Repository
 ```bash
@@ -121,7 +121,7 @@ Default credentials (if using the provided setup):
 - **Email**: admin@zonatickets.com
 - **Password**: admin123
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 FinalProjectNode-React/

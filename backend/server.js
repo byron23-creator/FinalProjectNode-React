@@ -67,20 +67,23 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-testConnection().then((connected) => {
-    if (connected) {
-        app.listen(PORT, () => {
-            console.log('=================================');
-            console.log('🚀 Server is running');
-            console.log(`📡 Port: ${PORT}`);
-            console.log(`🌐 URL: http://localhost:${PORT}`);
-            console.log('=================================');
-        });
-    } else {
-        console.error('❌ Failed to connect to database. Server not started.');
-        console.error('Please check your database configuration in .env file');
-        process.exit(1);
-    }
-});
+// Only start server if not in test environment
+if (process.env.NODE_ENV !== 'test') {
+    testConnection().then((connected) => {
+        if (connected) {
+            app.listen(PORT, () => {
+                console.log('=================================');
+                console.log('🚀 Server is running');
+                console.log(`📡 Port: ${PORT}`);
+                console.log(`🌐 URL: http://localhost:${PORT}`);
+                console.log('=================================');
+            });
+        } else {
+            console.error('❌ Failed to connect to database. Server not started.');
+            console.error('Please check your database configuration in .env file');
+            process.exit(1);
+        }
+    });
+}
 
 module.exports = app;
