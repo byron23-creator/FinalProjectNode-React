@@ -1,5 +1,12 @@
 const mysql = require('mysql2');
-require('dotenv').config();
+const path = require('path');
+
+// Load .env.test if in test environment
+if (process.env.NODE_ENV === 'test') {
+    require('dotenv').config({ path: path.join(__dirname, '../.env.test') });
+} else {
+    require('dotenv').config();
+}
 
 const pool = mysql.createPool({
     host: process.env.DB_HOST,

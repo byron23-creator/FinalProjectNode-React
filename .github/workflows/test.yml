@@ -51,8 +51,7 @@ jobs:
           echo "DB_HOST=127.0.0.1" > .env.test
           echo "DB_USER=root" >> .env.test
           echo "DB_PASSWORD=root_password" >> .env.test
-          echo "DB_NAME=event_management" >> .env.test
-          echo "DB_NAME_TEST=event_management_test" >> .env.test
+          echo "DB_NAME=event_management_test" >> .env.test
           echo "JWT_SECRET=test-secret-key-for-ci" >> .env.test
           echo "PORT=5000" >> .env.test
           echo "NODE_ENV=test" >> .env.test

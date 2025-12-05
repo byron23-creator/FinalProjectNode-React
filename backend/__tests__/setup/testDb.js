@@ -10,7 +10,7 @@ const getTestPool = () => {
       host: process.env.DB_HOST || 'localhost',
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || '',
-      database: process.env.DB_NAME_TEST || 'event_management_test',
+      database: process.env.DB_NAME || 'event_management_test',
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0
