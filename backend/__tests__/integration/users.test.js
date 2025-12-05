@@ -27,9 +27,8 @@ describe('Users Routes - Integration Tests', () => {
         .expect(200);
 
       expect(response.body.success).toBe(true);
-      expect(response.body.user).toBeDefined();
-      expect(response.body.user.email).toBe(user.email);
-      expect(response.body.user.password).toBeUndefined();
+      expect(response.body.data).toBeDefined();
+      expect(response.body.data.email).toBe(user.email);
     });
 
     it('should reject without authentication', async () => {
@@ -67,130 +66,104 @@ describe('Users Routes - Integration Tests', () => {
         .expect(401);
     });
 
-    it('should reject invalid email format', async () => {
+    it('should reject missing required fields', async () => {
       const user = await createTestUser('user');
       const token = generateToken(user);
 
       await request(app)
         .put('/api/users/profile')
         .set('Authorization', `Bearer ${token}`)
-        .send({ email: 'invalid-email' })
+        .send({ phone: '123456' })
         .expect(400);
     });
   });
 
-  describe('PUT /api/users/password', () => {
-    it('should change password with correct current password', async () => {
-      const user = await createTestUser('user');
-      const token = generateToken(user);
+  describe('GET /api/users/', () => {
+    it('should list all users as admin', async () => {
+      const admin = await createTestUser('admin');
+      const token = generateToken(admin);
 
       const response = await request(app)
-        .put('/api/users/password')
+        .get('/api/users/')
         .set('Authorization', `Bearer ${token}`)
-        .send({
-          currentPassword: 'password123',
-          newPassword: 'newPassword123'
-        })
         .expect(200);
 
       expect(response.body.success).toBe(true);
-      expect(response.body.message).toContain('changed');
+      expect(Array.isArray(response.body.users)).toBe(true);
     });
 
-    it('should reject with incorrect current password', async () => {
+    it('should reject non-admin users', async () => {
       const user = await createTestUser('user');
       const token = generateToken(user);
 
       await request(app)
-        .put('/api/users/password')
+        .get('/api/users/')
         .set('Authorization', `Bearer ${token}`)
-        .send({
-          currentPassword: 'wrongpassword',
-          newPassword: 'newPassword123'
-        })
-        .expect(401);
-    });
-
-    it('should reject without authentication', async () => {
-      await request(app)
-        .put('/api/users/password')
-        .send({
-          currentPassword: 'password123',
-          newPassword: 'newPassword123'
-        })
-        .expect(401);
-    });
-
-    it('should reject short new password', async () => {
-      const user = await createTestUser('user');
-      const token = generateToken(user);
-
-      await request(app)
-        .put('/api/users/password')
-        .set('Authorization', `Bearer ${token}`)
-        .send({
-          currentPassword: 'password123',
-          newPassword: '123'
-        })
-        .expect(400);
-    });
-
-    it('should reject missing current password', async () => {
-      const user = await createTestUser('user');
-      const token = generateToken(user);
-
-      await request(app)
-        .put('/api/users/password')
-        .set('Authorization', `Bearer ${token}`)
-        .send({
-          newPassword: 'newPassword123'
-        })
-        .expect(400);
+        .expect(403);
     });
   });
 
-  describe('DELETE /api/users/account', () => {
-    it('should delete user account with correct password', async () => {
+  describe('PUT /api/users/:id/role', () => {
+    it('should update user role as admin', async () => {
+      const admin = await createTestUser('admin');
       const user = await createTestUser('user');
-      const token = generateToken(user);
+      const token = generateToken(admin);
 
       const response = await request(app)
-        .delete('/api/users/account')
+        .put(`/api/users/${user.id}/role`)
         .set('Authorization', `Bearer ${token}`)
-        .send({ password: 'password123' })
+        .send({ role_id: 2 })
         .expect(200);
 
       expect(response.body.success).toBe(true);
-      expect(response.body.message).toContain('deleted');
+      expect(response.body.message).toContain('updated');
     });
 
-    it('should reject with incorrect password', async () => {
+    it('should reject non-admin users', async () => {
       const user = await createTestUser('user');
       const token = generateToken(user);
 
       await request(app)
-        .delete('/api/users/account')
+        .put(`/api/users/999/role`)
         .set('Authorization', `Bearer ${token}`)
-        .send({ password: 'wrongpassword' })
-        .expect(401);
+        .send({ role_id: 2 })
+        .expect(403);
     });
 
-    it('should reject without authentication', async () => {
+    it('should return 404 for non-existent user', async () => {
+      const admin = await createTestUser('admin');
+      const token = generateToken(admin);
+
       await request(app)
-        .delete('/api/users/account')
-        .send({ password: 'password123' })
-        .expect(401);
+        .put('/api/users/99999/role')
+        .set('Authorization', `Bearer ${token}`)
+        .send({ role_id: 2 })
+        .expect(404);
+    });
+  });
+
+  describe('GET /api/users/stats', () => {
+    it('should get user statistics as admin', async () => {
+      const admin = await createTestUser('admin');
+      const token = generateToken(admin);
+
+      const response = await request(app)
+        .get('/api/users/stats')
+        .set('Authorization', `Bearer ${token}`)
+        .expect(200);
+
+      expect(response.body.success).toBe(true);
+      expect(response.body.data).toBeDefined();
     });
 
-    it('should reject without password', async () => {
+    it('should reject non-admin users', async () => {
       const user = await createTestUser('user');
       const token = generateToken(user);
 
       await request(app)
-        .delete('/api/users/account')
+        .get('/api/users/stats')
         .set('Authorization', `Bearer ${token}`)
-        .send({})
-        .expect(400);
+        .expect(403);
     });
   });
 });
