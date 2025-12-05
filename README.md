@@ -1,4 +1,4 @@
-# ZonaTickets 
+# ZonaTickets - Link a video https://drive.google.com/file/d/1mBlR1CJtji3Z5rqKLnzThnzPeVbqKw3u/view?usp=drive_link
 
 A full-stack event ticketing platform built with React and Node.js, allowing users to browse events, purchase tickets, and manage bookings. Administrators can manage events, categories, and users through a dedicated admin panel.
 

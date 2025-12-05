@@ -15,7 +15,9 @@ const Home = () => {
   const [filters, setFilters] = useState({
     search: '',
     category: '',
-    featured: false
+    featured: false,
+    startDate: '',
+    endDate: ''
   });
 
   useEffect(() => {
@@ -45,7 +47,9 @@ const Home = () => {
         limit: 9,
         ...(filters.search && { search: filters.search }),
         ...(filters.category && { category: filters.category }),
-        ...(filters.featured && { featured: 'true' })
+        ...(filters.featured && { featured: 'true' }),
+        ...(filters.startDate && { startDate: filters.startDate }),
+        ...(filters.endDate && { endDate: filters.endDate })
       };
 
       const response = await eventsAPI.getAll(params);
@@ -72,6 +76,27 @@ const Home = () => {
 
   const handleFeaturedToggle = () => {
     setFilters({ ...filters, featured: !filters.featured });
+    setCurrentPage(1);
+  };
+
+  const handleStartDateChange = (e) => {
+    setFilters({ ...filters, startDate: e.target.value });
+    setCurrentPage(1);
+  };
+
+  const handleEndDateChange = (e) => {
+    setFilters({ ...filters, endDate: e.target.value });
+    setCurrentPage(1);
+  };
+
+  const handleClearFilters = () => {
+    setFilters({
+      search: '',
+      category: '',
+      featured: false,
+      startDate: '',
+      endDate: ''
+    });
     setCurrentPage(1);
   };
 
@@ -138,6 +163,32 @@ const Home = () => {
                 />
                 <span>Featured Only</span>
               </label>
+            </div>
+
+            <div className="filter-box">
+              <label>From Date</label>
+              <input
+                type="date"
+                value={filters.startDate}
+                onChange={handleStartDateChange}
+                className="filter-input"
+              />
+            </div>
+
+            <div className="filter-box">
+              <label>To Date</label>
+              <input
+                type="date"
+                value={filters.endDate}
+                onChange={handleEndDateChange}
+                className="filter-input"
+              />
+            </div>
+
+            <div className="filter-box">
+              <button onClick={handleClearFilters} className="clear-filters-btn">
+                Clear Filters
+              </button>
             </div>
           </div>
         </div>
